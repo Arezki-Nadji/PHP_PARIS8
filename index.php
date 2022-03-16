@@ -36,7 +36,8 @@ $sql='SELECT * FROM pagination LIMIT ' . $this_page_first_result . ',' .  $resul
 $result = mysqli_query($con, $sql);
 
 while($row = mysqli_fetch_array($result)) {
-  echo $row['id'] . ' ' . $row['alphabet']. '<br>';
+  echo "<img src='./upload/".$row['name']."' width='300px' ><br>";
+
 }
 
 // Affichage des liens 

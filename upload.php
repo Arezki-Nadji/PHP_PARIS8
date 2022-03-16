@@ -1,4 +1,8 @@
 <?php
+// connect to database
+$con = mysqli_connect('localhost','root','Tnlvk0oIyc3wx8Qk');
+mysqli_select_db($con, 'pagination_paris_8');
+
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -8,6 +12,10 @@ if(isset($_POST["submit"])) {
   if($check !== false) {
     echo "Le fichier est une image - " . $check["mime"] . ".";
     $uploadOk = 1;
+    $filetmp = $_FILES["fileToUpload"]["tmp_name"];
+    $filename = $_FILES["fileToUpload"]["name"];
+    $filetype = $_FILES["fileToUpload"]["type"];
+    $filepath = "article_images/".$filename;
   } else {
     echo "Le fichier n'est pas une image.";
     $uploadOk = 0;
@@ -20,7 +28,7 @@ if (file_exists($target_file)) {
 }
 
 // Vérifier la taille du fichier
-if ($_FILES["fileToUpload"]["size"] > 1500000) {
+if ($_FILES["fileToUpload"]["size"] > 5000000) {
   echo "Désoler votre fichier est très grand.";
   $uploadOk = 0;
 }
@@ -34,10 +42,17 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 if ($uploadOk == 0) {
   echo "Erreur, Votre fichier n'a pas pu etre copier.";
 } else {
-  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " Upload à pu se faire Correctement .";
+  $sql='SELECT * FROM pagination';
+  $result = mysqli_query($con, $sql);
+  $number_of_results = mysqli_num_rows($result);
+
+
+  $sql = "INSERT INTO pagination (name, type, size) VALUES (".$number_of_results.", ".$filename.", ".$target_file.")";
+  $con->query($sql);
+  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file) ) {
+    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["tmp_name"])). " Upload à pu se faire Correctement .";
   } else {
-    echo "Erreur, nous n'avos pas pu oploader votre fichier.";
+    echo "Erreur, nous n'avons pas pu oploader votre fichier.";
   }
 }
 ?>
