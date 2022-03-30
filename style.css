@@ -1,4 +1,65 @@
 .wrapper {
   display: inline-grid;
   grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 2%;
+  margin-left: 14%;
+  width: auto;
+  border: 3px solid green;
+  padding: 10px;
+}
+.upload {
+  padding: .5em;
+  margin: auto;
+  width: 45%;
+  padding: 5px;
+  text-align: center;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+.imagin {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 350px;
+  height: 250px;
+}
+.pagination {
+  padding: .5em;
+  margin-top: 2px;
+  margin-left: 500px ;
+  padding: 5px;
+  text-align: center;
+}
+.pagination a {
+  color: black;
+  float: left;
+  border-radius: 5px;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.pagination a.active {
+  background-color: #000000;
+  color: white;
 }
