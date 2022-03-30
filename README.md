@@ -11,4 +11,4 @@ TP 4 : Admin Panel
 Les identifiant  sont :
 Email : root@email.com
 Password : 123456789
-[![Admin.png](https://i.postimg.cc/pLgRWBqd/Admin.png)](https://postimg.cc/NK7WbRhh)6
+[![Admin.png](https://i.postimg.cc/pLgRWBqd/Admin.png)](https://postimg.cc/NK7WbRhh)
